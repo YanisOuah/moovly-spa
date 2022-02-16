@@ -136,7 +136,7 @@ const RegisterPage = () => {
     if (formData.password.length < 7) return false;
     if (formData.password !== formData.password2) return false;
     setIsLoading(true);
-    fetch("http://localhost:3001/register", {
+    fetch("https://moovlyapi.herokuapp.com/register", {
       method: "POST",
       body: JSON.stringify(formData), //This should ONLY be usefull data.
       headers: {
