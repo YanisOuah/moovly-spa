@@ -140,15 +140,19 @@ const LoginPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((r) => {
-      if (r.status === 200) {
+    })
+      .then((r) => {
+        if (r.status === 200) {
+          setIsLoading(false);
+          dispatch({ type: "login", token: "1" });
+          navigate("../home", { replace: true });
+        } else {
+          setIsLoading(false);
+        }
+      })
+      .catch((e) => {
         setIsLoading(false);
-        dispatch({ type: "login", token: "1" });
-        navigate("../home", { replace: true });
-      } else {
-        setIsLoading(false);
-      }
-    });
+      });
   };
   return (
     <MainDiv>
@@ -236,7 +240,10 @@ const LoginPage = () => {
             <input
               type="button"
               value={isLoading ? "awaiting response" : "Sign up"}
-              style={{ backgroundColor: isLoading ? "#a3a3a3" : "#dc1964" }}
+              style={{
+                backgroundColor: isLoading ? "#e1e1e1" : "#dc1964",
+                color: isLoading ? "#dc1964" : "white",
+              }}
               onClick={() => ValidateForm()}
             />
           </form>

@@ -2,4 +2,12 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import PassCheck from "./components/PassCheck";
+
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<PassCheck />, div);
+});

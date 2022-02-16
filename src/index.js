@@ -13,7 +13,6 @@ const RequireAuth = ({ children }) => {
   if (state.token === null) {
     return <Navigate to="/register" />;
   }
-
   return children;
 };
 
