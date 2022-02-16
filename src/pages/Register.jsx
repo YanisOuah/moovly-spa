@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import PassCheck from "../components/PassCheck";
-import Logo from "../img/moovly logo.svg";
+import Logo from "../img/MoovlyLogo.svg";
 import Awards from "../img/Moovlyawards.png";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context";
@@ -77,6 +77,9 @@ const RegisterDiv = styled.div`
           color: gray;
         }
       }
+      > div {
+        display: flex;
+      }
       > input {
         //SignUp Button
         cursor: pointer;
@@ -149,6 +152,9 @@ const RegisterPage = () => {
           dispatch({ type: "login", token: "1" });
           navigate("../home", { replace: true });
         } else {
+          toast("Looks like that email is already in use.", {
+            time: 3000,
+          });
           setIsLoading(false);
         }
       })
@@ -162,7 +168,7 @@ const RegisterPage = () => {
   return (
     <MainDiv>
       <TitleDiv>
-        <MoovlyImg src={Logo} alt="Moovly Logo" />
+        <MoovlyImg src={Logo} alt="MoovlyLogo" />
         <p>
           "With Moovly, I create professional training videos, and my customers
           really appreciate the quality."

@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
 import ReactDOM from "react-dom";
-import RegisterPage from "./pages/Register";
+import React, { useContext } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/Home";
-import { AppContext, AppProvider } from "./context";
-import ExtraPage from "./pages/Extra";
-import LogoutPage from "./pages/Logout";
 import "./index.css";
 import Navigation from "./components/Navigation";
+import RegisterPage from "./pages/Register";
+import HomePage from "./pages/Home";
+import ExtraPage from "./pages/Extra";
+import LogoutPage from "./pages/Logout";
+
+import { AppContext, AppProvider } from "./context";
 
 const RequireAuth = ({ children }) => {
   const { state } = useContext(AppContext);
@@ -28,7 +29,7 @@ ReactDOM.render(
             element={
               <RequireAuth>
                 <>
-                  <Navigation />
+                  <Navigation path="home" />
                   <HomePage />
                 </>
               </RequireAuth>
@@ -40,7 +41,7 @@ ReactDOM.render(
             element={
               <RequireAuth>
                 <>
-                  <Navigation />
+                  <Navigation path="extra" />
                   <ExtraPage />
                 </>
               </RequireAuth>
@@ -52,13 +53,14 @@ ReactDOM.render(
             element={
               <RequireAuth>
                 <>
-                  <Navigation />
+                  <Navigation path="logout" />
                   <LogoutPage />
                 </>
               </RequireAuth>
             }
           />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="*" element={<Navigate to="/register" />} />
         </Routes>
       </BrowserRouter>
     </AppProvider>

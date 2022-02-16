@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import MoovlyLogo from "../img/moovly logo.svg";
+import MoovlyLogo from "../img/MoovlyLogo.svg";
 
 const HeaderDiv = styled.div`
   display: flex;
@@ -16,20 +16,27 @@ const HeaderDiv = styled.div`
     left: 0;
     margin-left: 1em;
   }
-  > a {
-    font-weight: bold;
-    color: #f1f1f1;
-    margin: 0 20px;
-  }
 `;
-const Navigation = () => {
+const TestLink = styled(Link)`
+  font-weight: bold;
+  color: #f1f1f1;
+  margin: 0 20px;
+  text-decoration: ${(props) => (props.active ? "underline" : "none")};
+`;
+const Navigation = ({ path }) => {
   return (
     <>
       <HeaderDiv>
-        <img src={MoovlyLogo} alt="Moovly Logo" />
-        <Link to={"../"}>Home</Link>
-        <Link to={"../extra"}>Extra</Link>
-        <Link to={"../logout"}>Logout</Link>
+        <img src={MoovlyLogo} alt="MoovlyLogo" />
+        <TestLink active={path === "home"} to={"../"}>
+          Home
+        </TestLink>
+        <TestLink active={path === "extra"} to={"../extra"}>
+          Extra
+        </TestLink>
+        <TestLink active={path === "logout"} to={"../logout"}>
+          Logout
+        </TestLink>
       </HeaderDiv>
     </>
   );
