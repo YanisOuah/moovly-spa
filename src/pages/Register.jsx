@@ -5,6 +5,8 @@ import Logo from "../img/moovly logo.svg";
 import Awards from "../img/Moovlyawards.png";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context";
+import toast from "react-simple-toasts";
+
 const MainDiv = styled.div`
   display: flex;
   height: 100%;
@@ -134,7 +136,7 @@ const LoginPage = () => {
     if (formData.password.length < 7) return false;
     if (formData.password !== formData.password2) return false;
     setIsLoading(true);
-    fetch("http://localhost:3001/register?results=8", {
+    fetch("http://localhost:3001/register", {
       method: "POST",
       body: JSON.stringify(formData), //This should ONLY be usefull data.
       headers: {
@@ -151,6 +153,9 @@ const LoginPage = () => {
         }
       })
       .catch((e) => {
+        toast("Looks like something went wrong. Try again later.", {
+          time: 3000,
+        });
         setIsLoading(false);
       });
   };
