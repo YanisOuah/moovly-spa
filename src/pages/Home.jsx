@@ -3,14 +3,11 @@ import { useEffect, useState } from "react";
 const HomePage = () => {
   const [cat, setCat] = useState(null);
   const [isLoading, setIsloading] = useState(false);
-  console.log(1);
   const getNewCat = () => {
     setIsloading(true);
-    console.log("new cat inc");
     fetch("https://api.thecatapi.com/v1/images/search")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data[0]);
         setCat(data[0]);
         setIsloading(false);
       });

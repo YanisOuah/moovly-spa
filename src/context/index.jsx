@@ -3,16 +3,15 @@ import { initialState, reducer } from "./reducer";
 
 function useReducer(reducer, initState) {
   const [state, setState] = useState(initState);
-
   const dispatch = useCallback(
     (action) => {
       const nextState = reducer(state, action);
       setState(nextState);
+      localStorage.setItem("state", JSON.stringify(nextState));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [setState, state]
   );
-
   return [state, dispatch];
 }
 
@@ -22,7 +21,10 @@ const AppContext = createContext({
 });
 
 const AppProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(
+    reducer,
+    () => JSON.parse(localStorage.getItem("state")) || initialState
+  );
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       {children}

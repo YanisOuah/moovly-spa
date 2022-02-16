@@ -28,13 +28,13 @@ const Navigation = ({ path }) => {
     <>
       <HeaderDiv>
         <img src={MoovlyLogo} alt="MoovlyLogo" />
-        <TestLink active={path === "home"} to={"../"}>
+        <TestLink active={(path === "home").toString()} to={"../"}>
           Home
         </TestLink>
-        <TestLink active={path === "extra"} to={"../extra"}>
+        <TestLink active={(path === "extra").toString()} to={"../extra"}>
           Extra
         </TestLink>
-        <TestLink active={path === "logout"} to={"../logout"}>
+        <TestLink active={(path === "logout").toString()} to={"../logout"}>
           Logout
         </TestLink>
       </HeaderDiv>

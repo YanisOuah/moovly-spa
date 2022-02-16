@@ -113,7 +113,8 @@ const RegisterPage = () => {
   const { state, dispatch } = useContext(AppContext);
 
   useEffect(() => {
-    if (state.token !== null) navigate("../", { replace: true });
+    if (state.token !== undefined && state.token !== null)
+      navigate("../", { replace: true });
   });
   const [formData, setFormData] = useState({
     email: "",

@@ -12,7 +12,7 @@ import { AppContext, AppProvider } from "./context";
 
 const RequireAuth = ({ children }) => {
   const { state } = useContext(AppContext);
-  if (state.token === null) {
+  if (state.token === null || state.token === undefined) {
     return <Navigate to="/register" />;
   }
   return children;
