@@ -7,6 +7,7 @@ import { AppContext, AppProvider } from "./context";
 import ExtraPage from "./pages/Extra";
 import LogoutPage from "./pages/Logout";
 import "./index.css";
+import Navigation from "./components/Navigation";
 
 const RequireAuth = ({ children }) => {
   const { state } = useContext(AppContext);
@@ -26,7 +27,10 @@ ReactDOM.render(
             path="/"
             element={
               <RequireAuth>
-                <HomePage />
+                <>
+                  <Navigation />
+                  <HomePage />
+                </>
               </RequireAuth>
             }
           />
@@ -35,7 +39,10 @@ ReactDOM.render(
             path="/extra"
             element={
               <RequireAuth>
-                <ExtraPage />
+                <>
+                  <Navigation />
+                  <ExtraPage />
+                </>
               </RequireAuth>
             }
           />
@@ -44,7 +51,10 @@ ReactDOM.render(
             path="/logout"
             element={
               <RequireAuth>
-                <LogoutPage />
+                <>
+                  <Navigation />
+                  <LogoutPage />
+                </>
               </RequireAuth>
             }
           />

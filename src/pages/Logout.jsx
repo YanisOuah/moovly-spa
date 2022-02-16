@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Navigation from "../components/Navigation";
 import { AppContext } from "../context";
 
 const LogoutPage = () => {
@@ -7,7 +6,6 @@ const LogoutPage = () => {
   console.log(state);
   return (
     <>
-      <Navigation />
       <button onClick={() => dispatch({ type: "logout" })}>Logout</button>
       <div>logout</div>
     </>

@@ -105,7 +105,7 @@ const ErrorHr = styled.hr`
   border-radius: 5em;
 `;
 
-const LoginPage = () => {
+const RegisterPage = () => {
   let navigate = useNavigate();
   const { state, dispatch } = useContext(AppContext);
 
@@ -257,4 +257,4 @@ const LoginPage = () => {
     </MainDiv>
   );
 };
-export default LoginPage;
+export default RegisterPage;
